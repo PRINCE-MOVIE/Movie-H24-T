@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Infos - PRINCE X KAIRO MOVIE</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<style>
+  .info-wrap { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  .info-wrap h2 { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:1px; margin-bottom:1rem; border-left:4px solid #e50914; padding-left:12px; }
+  .info-wrap p { color:#c2c2c2; line-height:1.7; margin-bottom:1rem; font-size:0.95rem; }
+  .back-link { display:inline-block; margin-bottom:1.5rem; color:#e50914; text-decoration:none; font-size:0.85rem; }
+  .back-link:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+        <div class="logo">PK</div>
+        <h1>PRINCE X KAIRO <span>MOVIE</span></h1>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <div class="info-wrap">
+      <a href="index.html" class="back-link">← Retour à l'accueil</a>
+      <div id="content"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>Créé par Prince X Kairo — Données fournies par <a href="https://www.themoviedb.org" target="_blank">TMDB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const PAGES = {
+      about: {
+        title: "À propos",
+        body: "PRINCE X KAIRO MOVIE est un site qui t'aide à trouver rapidement où regarder légalement tes films préférés (streaming, location, achat), grâce aux données fournies par TMDB. Ce projet est une démo à but éducatif : les comptes utilisateurs et l'offre Premium ne sont pas connectés à de vrais services de paiement."
+      },
+      aide: {
+        title: "Centre d'aide",
+        body: "Besoin d'aide ? Utilise la barre de recherche pour trouver un film, filtre par genre avec les puces en haut de la liste, et clique sur une affiche pour voir la fiche détaillée (synopsis, note, bande-annonce et plateformes disponibles). Le bouton \"+\" ajoute un film à Ma Liste."
+      },
+      cgu: {
+        title: "Conditions d'utilisation",
+        body: "Ce site est fourni tel quel, à titre de démonstration. Les informations sur les films et les plateformes de streaming proviennent de TMDB et peuvent ne pas être exhaustives ou à jour. L'offre Premium est une simulation et ne débite aucun paiement réel."
+      },
+      confidentialite: {
+        title: "Confidentialité",
+        body: "Les informations que tu saisis (nom, email, téléphone) sont enregistrées uniquement dans le stockage local de ton navigateur (localStorage) et ne sont envoyées à aucun serveur. Elles restent sur ton appareil et disparaissent si tu vides les données de navigation."
+      },
+      contact: {
+        title: "Nous contacter",
+        body: "Ce site est un projet personnel de Prince X Kairo. Pour toute question, passe par le dépôt GitHub du projet."
+      },
+      cookies: {
+        title: "Préférences des cookies",
+        body: "Ce site n'utilise pas de cookies de suivi. Il utilise uniquement le localStorage de ton navigateur pour retenir ton compte, ta liste de films et ton statut Premium en local, sur ton appareil uniquement."
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('p') || 'about';
+    const page = PAGES[key] || PAGES.about;
+    document.title = page.title + " - PRINCE X KAIRO MOVIE";
+    document.getElementById('content').innerHTML = `<h2>${page.title}</h2><p>${page.body}</p>`;
+  </script>
+
+</body>
+      </html>
+      
