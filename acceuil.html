@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRINCE X KAIRO MOVIE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0505;
+    --curtain: #4a0404;
+    --curtain-dark: #260202;
+    --blood: #c81e1e;
+    --blood-bright: #e02e2e;
+    --bone: #ede6dd;
+    --ash: #9a8f8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    background: var(--ink);
+    color: var(--bone);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .stage {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8vh 6vw;
+  }
+
+  /* film grain */
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.06;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* spotlight */
+  .spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse 60% 45% at 50% 38%, rgba(200,30,30,0.16), transparent 70%);
+    animation: breathe 7s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  /* sprocket rails */
+  .rail {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    background: linear-gradient(180deg, var(--curtain-dark), var(--ink) 15%, var(--ink) 85%, var(--curtain-dark));
+  }
+  .rail.left { left: 0; }
+  .rail.right { right: 0; }
+  .rail span {
+    width: 9px;
+    height: 13px;
+    border-radius: 3px;
+    background: var(--ink);
+    box-shadow: inset 0 0 0 1px rgba(237,230,221,0.08);
+  }
+
+  @media (max-width: 640px) {
+    .rail { width: 14px; }
+    .rail span { width: 6px; height: 9px; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+
+  .eyebrow-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ash);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.6rem;
+  }
+  .eyebrow-mark .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blood-bright);
+    box-shadow: 0 0 8px var(--blood-bright);
+  }
+
+  h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: 0.01em;
+    font-size: clamp(3.2rem, 13vw, 8rem);
+    color: var(--bone);
+  }
+  h1 .x {
+    color: var(--blood-bright);
+    font-weight: 700;
+    font-size: 0.6em;
+    display: inline-block;
+    margin: 0 0.08em;
+    transform: translateY(-0.08em);
+  }
+
+  .sub {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.6vw, 1.5rem);
+    letter-spacing: 0.28em;
+    color: var(--blood-bright);
+    margin-top: 0.4rem;
+  }
+
+  .tagline {
+    margin: 2rem auto 0;
+    max-width: 42ch;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ash);
+  }
+
+  .enter {
+    margin-top: 2.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.95rem 2.3rem;
+    background: var(--blood);
+    color: var(--bone);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 2px;
+    border: 1px solid var(--blood-bright);
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .enter:hover {
+    background: var(--blood-bright);
+    transform: translateY(-1px);
+  }
+  .enter:focus-visible {
+    outline: 2px solid var(--bone);
+    outline-offset: 3px;
+  }
+
+  .enter .ticket-notch {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+
+  footer {
+    position: absolute;
+    bottom: 2.4rem;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--ash);
+    letter-spacing: 0.03em;
+  }
+
+  /* curtain reveal */
+  .curtain {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(90deg, var(--curtain-dark), var(--curtain));
+    z-index: 10;
+    animation: pull 1.3s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+  }
+  .curtain.l { left: 0; }
+  .curtain.r { right: 0; }
+  .curtain.r { transform: scaleX(1); transform-origin: right; }
+  .curtain.l { transform: scaleX(1); transform-origin: left; }
+
+  @keyframes pull {
+    to { transform: scaleX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .curtain { display: none; }
+    .spotlight { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="curtain l"></div>
+  <div class="curtain r"></div>
+
+  <div class="rail left" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="rail right" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <main class="stage">
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="content">
+      <p class="eyebrow-mark"><span class="dot"></span>La salle est ouverte</p>
+      <h1>PRINCE<span class="x">X</span>KAIRO</h1>
+      <p class="sub">MOVIE</p>
+      <p class="tagline">Bienvenue et profite des films gratuits.</p>
+      <a class="enter" href="#" onclick="return false;">
+        <span class="ticket-notch"></span>
+        ENTRER
+      </a>
+    </div>
+    <footer>PRINCE X KAIRO MOVIE — 2026</footer>
+  </main>
+
+</body>
+                                                                             </html>
+        
